@@ -12,6 +12,13 @@ class PuntosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function agregarIwin(Request $request){
+        $jugador = User::findOrFail($request->jugador_id);
+        $puntos = $jugador->puntos->last();
+        $jugador->puntos = $puntos + $request->puntos;
+        $jugador->save();
+        return response()->json($jugador, 201);
+    }
     public function index()
     {
         //
@@ -96,4 +103,5 @@ class PuntosController extends Controller
         $punto->delete();
         return response()->json(null, 204);
     }
+    
 }
