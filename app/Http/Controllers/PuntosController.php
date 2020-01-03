@@ -87,8 +87,10 @@ class PuntosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $punto = Punto::findOrFail($id);
-        $punto->update($request->all());
+        $punto = Punto::findOrFail($id);        
+        $punto->puntos = $request->puntos;
+        $punto->jugador_id = $request->jugador_id;
+        $punto->save();
         return response()->json($punto, 200);
     }
 
