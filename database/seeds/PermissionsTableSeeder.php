@@ -21,7 +21,7 @@ class PermissionsTableSeeder extends Seeder
           Permission::create(['name' => 'puntos.show']);
           Permission::create(['name' => 'puntos.create']);
           Permission::create(['name' => 'puntos.destroy']);
-          Permission::create(['name' => 'puntos.agregaIwin']);
+          Permission::create(['name' => 'puntos.agregarIwin']);
   
           //Admin
           $admin = Role::create(['name' => 'Admin']);
