@@ -15,7 +15,7 @@ class PuntosController extends Controller
     public function index()
     {
         //
-        $puntos = Punto::get();
+        return Punto::all();
     }
 
     /**
@@ -41,6 +41,7 @@ class PuntosController extends Controller
         $punto->puntos = $request->puntos;
         $punto->jugador_id = $request->jugador_id;
         $punto->save();
+        return response()->json($punto, 201);
 
     }
 
@@ -53,6 +54,7 @@ class PuntosController extends Controller
     public function show($id)
     {
         //
+        return Punto::findOrFail($id);
     }
 
     /**
@@ -76,6 +78,9 @@ class PuntosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $punto = Punto::findOrFail($id);
+        $punto->update($request->all());
+        return response()->json($punto, 200);
     }
 
     /**
@@ -87,5 +92,8 @@ class PuntosController extends Controller
     public function destroy($id)
     {
         //
+        $punto = Punto::findOrFail($id);
+        $punto->delete();
+        return response()->json(null, 204);
     }
 }
