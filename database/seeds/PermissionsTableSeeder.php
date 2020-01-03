@@ -21,6 +21,7 @@ class PermissionsTableSeeder extends Seeder
           Permission::create(['name' => 'puntos.show']);
           Permission::create(['name' => 'puntos.create']);
           Permission::create(['name' => 'puntos.destroy']);
+          Permission::create(['name' => 'puntos.agregaIwin']);
   
           //Admin
           $admin = Role::create(['name' => 'Admin']);
@@ -30,7 +31,8 @@ class PermissionsTableSeeder extends Seeder
               'puntos.edit',
               'puntos.show',
               'puntos.create',
-              'puntos.destroy'
+              'puntos.destroy',
+              'puntos.agregarIwin'
           ]);
           //$admin->givePermissionTo('products.index');
           //$admin->givePermissionTo(Permission::all());

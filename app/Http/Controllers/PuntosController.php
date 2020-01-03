@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Punto;
+use App\User;
 
 class PuntosController extends Controller
 {
@@ -14,10 +15,11 @@ class PuntosController extends Controller
      */
     public function agregarIwin(Request $request){
         $jugador = User::findOrFail($request->jugador_id);
-        $puntos = $jugador->puntos->last();
-        $jugador->puntos = $puntos + $request->puntos;
-        $jugador->save();
-        return response()->json($jugador, 201);
+        $punto = new Punto;
+        $punto->puntos = $request->puntos;
+        $punto->jugador_id = $request->jugador_id;
+        $punto->save();
+        return response()->json($jugador->puntos->sum('puntos'), 201);
     }
     public function index()
     {

@@ -20,4 +20,5 @@ Route::post('/register','Api\AuthController@register');
 Route::post('/login','Api\AuthController@login');
 Route::group(['middleware' => ['auth:api','role:Admin']], function () {
     Route::resource('puntos', 'PuntosController');
+    Route::post('/agregarIwin','PuntosController@agregarIwin');
 });
